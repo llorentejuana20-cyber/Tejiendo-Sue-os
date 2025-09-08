@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tejiendo Sueños — Artesanía en crochet, macramé y mostacilla</title>
+  <meta name="description" content="Tejiendo Sueños: piezas artesanales personalizadas en crochet, macramé y mostacilla. De tus sueños a tus manos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías aproximadas a las del manual: Adam Script ≈ Pacifico, Balabeloo ≈ Baloo 2, Childos Arabic ≈ Cairo, Inter = Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --c-blue:#AACCFF;   /* Tranquilidad, calma, seriedad */
+      --c-pink:#FFBCE5;   /* Dulzura, infancia, delicadeza */
+      --c-yellow:#FFECA0; /* Felicidad, optimismo, energía */
+      --c-white:#FFFFFF;  /* Pureza, perfección, limpieza */
+      --text:#2a2a2a;
+      --muted:#5f6570;
+      --radius:20px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;line-height:1.6;background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(255,188,229,.35), transparent 60%),
+      radial-gradient(1000px 500px at 110% 0%, rgba(170,204,255,.35), transparent 55%),
+      linear-gradient(180deg, #fff 0%, #fff 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px, 92%);margin-inline:auto}
+    .btn{display:inline-block;padding:.9rem 1.2rem;border-radius:999px;font-weight:700}
+    .btn.primary{background:var(--c-blue)}
+    .btn.secondary{background:var(--c-pink)}
+    .btn.ghost{background:#fff;border:2px solid var(--c-blue)}
+    header.site{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(0,0,0,.06)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand h1{font-family:Pacifico, cursive;font-size:1.35rem;letter-spacing:.3px;margin:0;color:#333}
+    .slogan{font-family:Cairo, sans-serif;font-weight:700;color:#444;font-size:.9rem}
+    .menu{display:flex;gap:1rem;align-items:center}
+    .menu a{padding:.4rem .7rem;border-radius:999px}
+    .menu a:hover{background:rgba(0,0,0,.04)}
+    .mobile-toggle{display:none}
+
+    .hero{padding:3.5rem 0 2rem}
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .hero h2{font-family:Baloo 2, system-ui;font-size:2.4rem;line-height:1.15;margin:.2rem 0 1rem}
+    .hero p.lead{font-size:1.08rem;color:var(--muted);max-width:60ch}
+    .badge{display:inline-flex;align-items:center;gap:.4rem;font-weight:700;font-size:.85rem;padding:.4rem .7rem;border-radius:999px;background:var(--c-yellow)}
+
+    .card-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .card{grid-column:span 4;background:#fff;border-radius:var(--radius);padding:1.2rem;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .6rem;font-family:Baloo 2}
+    .card p{color:var(--muted)}
+
+    section{padding:3rem 0}
+    section h2{font-family:Baloo 2, system-ui;font-size:2rem;margin:0 0 1.2rem}
+    .pill{display:inline-block;background:#fff;border:2px dashed var(--c-pink);border-radius:999px;padding:.35rem .75rem;font-weight:700}
+
+    .palette{display:flex;gap:1rem;flex-wrap:wrap}
+    .swatch{flex:1 1 160px;border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+    .chip{height:80px}
+    .swatch .meta{padding:.8rem}
+    .meta small{display:block;color:var(--muted)}
+
+    .typography{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .type-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem}
+    .type-sample.script{font-family:Pacifico, cursive;font-size:2rem}
+    .type-sample.display{font-family:Baloo 2, cursive;font-size:1.8rem}
+    .type-sample.titles{font-family:Cairo, sans-serif;font-size:1.6rem;font-weight:700}
+    .type-sample.body{font-family:Inter, sans-serif}
+
+    .list{display:grid;gap:.5rem}
+    .list li{background:#fff;border-radius:12px;padding:.7rem 1rem;box-shadow:var(--shadow)}
+
+    .products .card{display:grid;gap:.5rem}
+    .products .tag{font-size:.8rem;font-weight:700;display:inline-block;padding:.2rem .6rem;border-radius:999px;background:var(--c-blue)}
+
+    .value-prop{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+    .cta-box{background:linear-gradient(135deg, var(--c-blue), var(--c-pink));color:#333;border-radius:24px;padding:1.6rem;box-shadow:var(--shadow)}
+    .cta-box h3{margin:.2rem 0 1rem;font-family:Baloo 2}
+
+    .footer{padding:2rem 0;border-top:1px solid rgba(0,0,0,.06);color:#444}
+
+    /* Logo (SVG) */
+    .logo{
+      width:44px;height:44px;display:inline-block
+    }
+
+    /* Utilidades */
+    .mt-0{margin-top:0}.mb-0{margin-bottom:0}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:1rem}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .muted{color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr}
+      .card{grid-column:span 12}
+      .typography{grid-template-columns:1fr}
+      .value-prop{grid-template-columns:1fr}
+      .menu{display:none}
+      .mobile-toggle{display:inline-flex;border:0;background:#fff;border:2px solid #0002;padding:.4rem .6rem;border-radius:10px}
+      .nav{gap:.6rem}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="logo" aria-hidden="true">
+          <!-- Nube con ganchos de crochet (isotipo) -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#AACCFF"/>
+                <stop offset="100%" stop-color="#FFBCE5"/>
+              </linearGradient>
+            </defs>
+            <path d="M20 40a10 10 0 0 1 0-20 12 12 0 0 1 23-2 9 9 0 1 1 3 22H20z" fill="url(#g1)"/>
+            <!-- Ganchos -->
+            <path d="M34 18c2 6-6 10-2 18m-8-8c1 6-6 10-3 18" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M29 36l12 12M21 28l12 12" stroke="#3a3a3a" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <h1 class="mb-0">Tejiendo Sueños</h1>
+          <div class="slogan">De tus sueños a tus manos</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#introduccion">Introducción</a>
+        <a href="#identidad">Identidad visual</a>
+        <a href="#productos">Productos</a>
+        <a href="#corporativa">Misión & Visión</a>
+        <a href="#redes">Redes</a>
+        <a class="btn ghost" href="#contacto">Encargar</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Abrir menú" onclick="document.querySelector('.menu').style.display = document.querySelector('.menu').style.display==='flex'?'none':'flex'">Menú</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero-inner">
+      <div>
+        <span class="badge">Artesanía local • Crochet • Macramé • Mostacilla</span>
+        <h2>Hecho a mano, con amor y propósito</h2>
+        <p class="lead">Creamos piezas artesanales personalizadas con técnicas tradicionales como el crochet, el macramé y la mostacilla. Cada diseño refleja identidad cultural y conecta emocionalmente con quien lo lleva.</p>
+        <div style="display:flex;gap:.7rem;margin-top:1.1rem">
+          <a class="btn primary" href="#productos">Ver productos</a>
+          <a class="btn secondary" href="#contacto">Pedir a la medida</a>
+        </div>
+      </div>
+      <div class="cta-box">
+        <h3>Propuesta de valor</h3>
+        <p class="mb-1">Piezas únicas y personalizadas, hechas a mano, que rescatan la tradición del tejido y apoyan la artesanía local.</p>
+        <ul class="list" style="margin:0">
+          <li>Calidad y durabilidad</li>
+          <li>Precios justos</li>
+          <li>Sentimiento de exclusividad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUCCIÓN & OBJETIVOS -->
+  <section id="introduccion">
+    <div class="container">
+      <h2>Introducción</h2>
+      <p>La artesanía es parte esencial de la identidad cultural de nuestras comunidades. En <strong>Tejiendo Sueños</strong> buscamos rescatar su valor a través de productos elaborados con <em>crochet</em>, <em>macramé</em> y tejido en <em>mostacilla</em>, promoviendo su reconocimiento y valoración en la vida cotidiana.</p>
+
+      <div class="grid-2" style="margin-top:1.2rem">
+        <div class="card">
+          <h3>Impacto Cultural</h3>
+          <p class="muted">Rescate y difusión de técnicas tradicionales de tejido.</p>
+        </div>
+        <div class="card">
+          <h3>Impacto Social</h3>
+          <p class="muted">Sensibilización sobre la importancia del arte artesanal y su rol en la identidad cultural.</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top:2rem">Objetivos</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>General</h3>
+          <p>Reconocer el valor de la artesanía mediante la creación de productos con técnicas tradicionales para generar conciencia cultural.</p>
+        </div>
+        <div class="card">
+          <h3>Específicos</h3>
+          <ul class="list">
+            <li>Rescatar y difundir técnicas de tejido con productos modernos y atractivos.</li>
+            <li>Desarrollar una estrategia de comercialización digital.</li>
+            <li>Sensibilizar a la comunidad sobre la artesanía y su preservación.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Público objetivo</h3>
+          <p>Jóvenes y adultos que buscan accesorios y productos diferentes, valoran la originalidad, apoyan el emprendimiento local y el trabajo artesanal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTIDAD VISUAL -->
+  <section id="identidad" aria-labelledby="titulo-identidad">
+    <div class="container">
+      <h2 id="titulo-identidad">Identidad visual</h2>
+      <p class="muted">Nuestro isotipo combina una nube y ganchos de crochet para expresar la esencia del nombre: <strong>Sueños</strong> + <strong>Tejiendo</strong>. El logotipo se utiliza en variantes horizontal y vertical, además de su isotipo independiente para merchandising.</p>
+
+      <div class="palette" style="margin:1rem 0 1.2rem">
+        <div class="swatch">
+          <div class="chip" style="background:var(--c-blue)"></div>
+          <div class="meta"><strong>#AACCFF</strong><small>Tranquilidad • Calma • Seriedad</small></div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:var(--c-pink)"></div>
+          <div class="meta"><strong>#FFBCE5</strong><small>Dulzura • Infancia • Delicadeza</small></div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:var(--c-yellow)"></div>
+          <div class="meta"><strong>#FFECA0</strong><small>Felicidad • Optimismo • Energía</small></div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:var(--c-white);border:1px solid #0001"></div>
+          <div class="meta"><strong>#FFFFFF</strong><small>Pureza • Perfección • Limpieza</small></div>
+        </div>
+      </div>
+
+      <div class="typography">
+        <div class="type-card">
+          <div class="pill">Tipografías</div>
+          <p class="type-sample.script">Tejiendo Sueños</p>
+          <p class="muted mb-2">Uso: nombre del emprendimiento y logotipo (Adam Script ≈ Pacifico).</p>
+          <p class="type-sample.display">Titulares y promociones</p>
+          <p class="muted">Uso: títulos principales (Balabeloo ≈ Baloo 2).</p>
+        </div>
+        <div class="type-card">
+          <p class="type-sample.titles">De tus sueños a tus manos</p>
+          <p class="muted mb-2">Uso: slogan y títulos (Childos Arabic ≈ Cairo).</p>
+          <p class="type-sample.body">Texto general e interfaz (Inter).</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card">
+          <h3>Área de reserva</h3>
+          <p class="muted">Dejar respiración suficiente y evitar sobrecarga visual alrededor del logotipo.</p>
+        </div>
+        <div class="card">
+          <h3>Reducción mínima</h3>
+          <p class="muted">Usar medidas mínimas para mantener legibilidad y calidad del trazo.</p>
+        </div>
+        <div class="card">
+          <h3>Buenas prácticas</h3>
+          <p class="muted">No alterar tipografías ni colores fuera de la paleta. Mantener proporciones originales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos" class="products" aria-labelledby="titulo-productos">
+    <div class="container">
+      <h2 id="titulo-productos">Productos</h2>
+      <div class="card-grid">
+        <article class="card">
+          <span class="tag">Macramé</span>
+          <h3>Manillas macramé</h3>
+          <p>Manillas tejidas en macramé con variedad de colores y opciones de letras o pepitas, personalizadas al gusto del cliente.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Mostacilla</span>
+          <h3>Manillas en mostacilla</h3>
+          <p>Tejidas en telar con patrones y estilos variados; cada pieza se diseña según tus preferencias.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Crochet</span>
+          <h3>Amigurumis</h3>
+          <p>Muñecos tejidos que pueden ser llaveros o figuras decorativas. Diseños 100% personalizados.</p>
+        </article>
+      </div>
+
+      <div class="value-prop" style="margin-top:1.2rem">
+        <ul class="list" aria-label="Beneficios para el usuario">
+          <li>Piezas únicas y personalizadas</li>
+          <li>Calidad y durabilidad</li>
+          <li>Apoyo a la artesanía local</li>
+          <li>Precios justos</li>
+          <li>Sentimiento de exclusividad</li>
+        </ul>
+        <div class="card">
+          <h3>Encargos a la medida</h3>
+          <p class="muted">Cuéntanos tu idea: colores, medidas y estilo. Te asesoramos para que tu producto sea exactamente como lo sueñas.</p>
+          <a class="btn secondary" href="#contacto">Solicitar cotización</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTIDAD CORPORATIVA -->
+  <section id="corporativa" aria-labelledby="titulo-corporativa">
+    <div class="container">
+      <h2 id="titulo-corporativa">Identidad corporativa</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Misión</h3>
+          <p>Recuperar el valor de la artesanía mediante productos creados con técnicas tradicionales como crochet, macramé y mostacilla, elaborados por jóvenes que creen en la cultura del tejido.</p>
+        </div>
+        <div class="card">
+          <h3>Visión</h3>
+          <p>Aspiramos a que la sociedad reconozca la importancia de la artesanía tejida; crecer nacionalmente con presencia digital y ventas online, y aportar a la comunidad con conocimiento y clases de tejido.</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card">
+          <h3>Valores</h3>
+          <ul class="list">
+            <li><strong>Innovación:</strong> exploramos nuevas ideas para crear piezas únicas.</li>
+            <li><strong>Resiliencia:</strong> aprendemos y mejoramos frente a los retos.</li>
+            <li><strong>Colaboración:</strong> el trabajo en equipo potencia la creatividad.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Arquetipo</h3>
+          <p class="muted">El Tierno — transmitimos amabilidad, ternura y felicidad.</p>
+        </div>
+        <div class="card">
+          <h3>Tono y estilo</h3>
+          <p class="muted">Comunicación amable y alegre, para inspirar a la comunidad a apoyar la artesanía y a nuestro emprendimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICACIONES Y MARCA -->
+  <section id="aplicaciones">
+    <div class="container">
+      <h2>Aplicaciones de marca</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Papelería</h3>
+          <p class="muted">Hojas membretadas y tarjetas con fondo rosa claro, nubes blancas y el logo en esquina, siguiendo paleta y tipografías.</p>
+        </div>
+        <div class="card">
+          <h3>Packaging</h3>
+          <p class="muted">Cajas y soportes de cartón sostenible para amigurumis y manillas.</p>
+        </div>
+        <div class="card">
+          <h3>Uniformes & Merch</h3>
+          <p class="muted">Camisetas y gorras blancas con el isotipo; stickers y otros elementos promocionales.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.2rem">Manual de uso</h3>
+      <ul class="list">
+        <li>Respetar la paleta de color y las tipografías definidas.</li>
+        <li>Evitar reducciones que afecten la legibilidad del logo.</li>
+        <li>No alterar proporciones ni aplicar efectos que distorsionen la marca.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- REDES Y CONTACTO -->
+  <section id="redes">
+    <div class="container">
+      <h2>Redes sociales</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Instagram</h3>
+          <p>@TejiendoSueños123</p>
+          <a class="btn primary" href="#contacto">Quiero ver el catálogo</a>
+        </div>
+        <div class="card">
+          <h3>Facebook</h3>
+          <p>TejiendoSueños</p>
+          <a class="btn primary" href="#contacto">Escríbenos</a>
+        </div>
+        <div class="card">
+          <h3>TikTok</h3>
+          <p>@Tejiendosueños123</p>
+          <a class="btn primary" href="#contacto">Ver videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="grid-2">
+        <form class="card" onsubmit="event.preventDefault(); alert('¡Gracias! Te responderemos pronto.');">
+          <h3>Cuéntanos tu idea</h3>
+          <label>Nombre<br>
+            <input required type="text" name="nombre" placeholder="Tu nombre" style="width:100%;padding:.8rem;border:1px solid #0001;border-radius:12px;">
+          </label>
+          <label>Correo<br>
+            <input required type="email" name="correo" placeholder="tucorreo@ejemplo.com" style="width:100%;padding:.8rem;border:1px solid #0001;border-radius:12px;">
+          </label>
+          <label>Mensaje<br>
+            <textarea required name="mensaje" rows="5" placeholder="Colores, medidas, referencias..." style="width:100%;padding:.8rem;border:1px solid #0001;border-radius:12px;"></textarea>
+          </label>
+          <button class="btn secondary" type="submit">Enviar</button>
+        </form>
+        <div class="card">
+          <h3>Información</h3>
+          <p class="muted">Atendemos pedidos personalizados de forma local. Escríbenos por redes o déjanos tu mensaje.</p>
+          <ul class="list">
+            <li><strong>Horario:</strong> Lun–Sáb 9:00–18:00</li>
+            <li><strong>Ubicación:</strong> Colombia</li>
+            <li><strong>Correo:</strong> contacto@tejiendosuenos.co (ejemplo)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FFECA0"/>
+                <stop offset="100%" stop-color="#FFBCE5"/>
+              </linearGradient>
+            </defs>
+            <path d="M20 40a10 10 0 0 1 0-20 12 12 0 0 1 23-2 9 9 0 1 1 3 22H20z" fill="url(#g2)"/>
+            <path d="M34 18c2 6-6 10-2 18m-8-8c1 6-6 10-3 18" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M29 36l12 12M21 28l12 12" stroke="#3a3a3a" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <strong>Tejiendo Sueños</strong>
+      </div>
+      <small class="muted">© <script>document.write(new Date().getFullYear())</script> Tejiendo Sueños — Hecho a mano en Colombia</small>
+    </div>
+  </footer>
+</body>
+</html>
